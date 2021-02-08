@@ -1,8 +1,18 @@
-// import {combineReducers} from "redux";
+import {combineReducers} from "redux";
+import {persistReducer} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import contactsReducer from "./contactsReducer";
+import authReducer from "./authReducer";
 
-const rootReducer = {
-    contacts: contactsReducer,
+const authPersistConfig = {
+    key: "auth",
+    storage,
+    whitelist: ["email", "idToken", "logged"],
 };
+
+const rootReducer = combineReducers({
+    contacts: contactsReducer,
+    auth: persistReducer(authPersistConfig, authReducer),
+});
 
 export default rootReducer;

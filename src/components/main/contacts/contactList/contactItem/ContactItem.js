@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {removeContactOperation} from "../../../../redux/operations/contactsOperations";
+import {removeContactOperation} from "../../../../../redux/operations/contactsOperations";
 import transition from "styled-transition-group";
 
 const Li = transition.li`

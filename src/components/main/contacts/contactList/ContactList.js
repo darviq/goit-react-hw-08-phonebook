@@ -1,4 +1,4 @@
-import contactsSelector from "../../../redux/selectors/contacts-selectors";
+import contactsSelector from "../../../../redux/selectors/contactsSelectors";
 import {TransitionGroup} from "react-transition-group";
 import {useSelector} from "react-redux";
 import {ContactItem, Li} from "./contactItem/ContactItem";
