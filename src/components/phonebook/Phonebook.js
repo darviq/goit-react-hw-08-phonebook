@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {loadContactsOperation} from "../../redux/operations/contactOperations";
+import {loadContactsOperation} from "../../redux/operations/contactsOperations";
 import contactsSelector from "../../redux/selectors/contacts-selectors";
 import ContactForm from "./contactForm/ContactForm";
 import Filter from "./filter/Filter";

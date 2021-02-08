@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 import Notification from "./notification/Notification";
-import {addContactOperation} from "../../../redux/operations/contactOperations";
+import {addContactOperation} from "../../../redux/operations/contactsOperations";
 import Form from "./ContactFormStyled";
 
 const ContactForm = ({contacts}) => {

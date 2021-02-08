@@ -1,6 +1,4 @@
-import {addContact, loadContacts, removeContact} from "../reducers/contactsReducer";
-import {changeLoadingStatus} from "../reducers/loadingReducer";
-import {setError} from "../reducers/errorsReducer";
+import {addContact, loadContacts, removeContact, changeLoadingStatus, setError} from "../reducers/contactsReducer";
 import axios from "axios";
 
 const baseURL = "https://phonebook-aed1e-default-rtdb.firebaseio.com";

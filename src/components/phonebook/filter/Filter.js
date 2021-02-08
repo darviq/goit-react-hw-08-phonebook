@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 import styled from "styled-components";
-import {changeFilter} from "../../../redux/reducers/filterReducer";
+import {changeFilter} from "../../../redux/reducers/contactsReducer";
 
 const Div = styled.div`
     width: 100%;
