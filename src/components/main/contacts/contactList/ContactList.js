@@ -1,10 +1,10 @@
-import contactsSelector from "../../../../redux/selectors/contactsSelectors";
 import {TransitionGroup} from "react-transition-group";
 import {useSelector} from "react-redux";
+import contactsSelectors from "../../../../redux/selectors/contactsSelectors";
 import {ContactItem, Li} from "./contactItem/ContactItem";
 
 const ContactList = () => {
-    const contactsToShow = useSelector(contactsSelector.getFilteredContacts);
+    const contactsToShow = useSelector(contactsSelectors.getFilteredContacts);
 
     return (
         <TransitionGroup component="ul">

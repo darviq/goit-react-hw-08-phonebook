@@ -10,6 +10,7 @@ export const setError = createAction(auth.setError);
 const initialState = {
     email: "",
     idToken: "",
+    uid: "",
     logged: false,
     loading: false,
     error: null,
@@ -23,6 +24,7 @@ const authReducer = createReducer(
                 ...state,
                 email: payload.email,
                 idToken: payload.idToken,
+                uid: payload.localId,
                 logged: true,
                 error: null,
             }),

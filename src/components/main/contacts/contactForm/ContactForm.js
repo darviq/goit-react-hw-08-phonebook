@@ -36,12 +36,12 @@ const ContactForm = ({contacts}) => {
 
     const submitHandler = e => {
         e.preventDefault();
-        // if (contacts.find(contact => contact.name === state.name)) {
-        //     contactExists();
-        // } else {
-        //     dispatch(addContactOperation({name: state.name, number: state.number}));
-        //     setState({name: "", number: "", showNotification: false});
-        // }
+        if (contacts.find(contact => contact.name === state.name)) {
+            contactExists();
+        } else {
+            dispatch(addContactOperation({name: state.name, number: state.number}));
+            setState({name: "", number: "", showNotification: false});
+        }
     };
 
     return (

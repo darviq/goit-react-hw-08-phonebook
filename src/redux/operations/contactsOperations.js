@@ -1,21 +1,25 @@
-import {addContact, loadContacts, removeContact, changeLoadingStatus, setError} from "../reducers/contactsReducer";
 import axios from "axios";
+import {addContact, loadContacts, clearContacts, removeContact, changeLoadingStatus, setError} from "../reducers/contactsReducer";
 
-const baseURL = "https://phonebook-aed1e-default-rtdb.firebaseio.com";
+const baseURL = "https://finalphonebook-default-rtdb.firebaseio.com";
 
-export const addContactOperation = contact => dispatch => {
+export const addContactOperation = contact => (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    const idToken = getState().auth.idToken;
     dispatch(changeLoadingStatus());
     axios
-        .post(`${baseURL}/contacts.json`, {...contact})
+        .post(`${baseURL}/contacts/${uid}.json?auth=${idToken}`, {...contact})
         .then(response => dispatch(addContact({...contact, id: response.data.name})))
         .catch(error => dispatch(setError(error)))
         .finally(() => dispatch(changeLoadingStatus()));
 };
 
-export const loadContactsOperation = () => dispatch => {
+export const loadContactsOperation = () => (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    const idToken = getState().auth.idToken;
     dispatch(changeLoadingStatus());
     axios
-        .get(`${baseURL}/contacts.json`)
+        .get(`${baseURL}/contacts/${uid}.json?auth=${idToken}`)
         .then(response => {
             if (response.data) {
                 const contacts = Object.keys(response.data).map(key => ({
@@ -23,16 +27,18 @@ export const loadContactsOperation = () => dispatch => {
                     id: key,
                 }));
                 dispatch(loadContacts(contacts));
-            }
+            } else dispatch(clearContacts());
         })
         .catch(error => dispatch(setError(error)))
         .finally(() => dispatch(changeLoadingStatus()));
 };
 
-export const removeContactOperation = id => dispatch => {
+export const removeContactOperation = id => (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    const idToken = getState().auth.idToken;
     dispatch(changeLoadingStatus());
     axios
-        .delete(`${baseURL}/contacts/${id}.json`)
+        .delete(`${baseURL}/contacts/${uid}/${id}.json?auth=${idToken}`)
         .then(() => dispatch(removeContact(id)))
         .catch(error => dispatch(setError(error)))
         .finally(() => dispatch(changeLoadingStatus()));

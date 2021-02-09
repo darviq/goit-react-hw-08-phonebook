@@ -4,6 +4,7 @@ import {contacts} from "../actionTypes/actionTypes";
 
 export const addContact = createAction(contacts.add);
 export const loadContacts = createAction(contacts.load);
+export const clearContacts = createAction(contacts.clear);
 export const removeContact = createAction(contacts.remove);
 export const changeFilter = createAction(contacts.changeFilter);
 export const changeLoadingStatus = createAction(contacts.changeLoadingStatus);
@@ -21,6 +22,7 @@ const contactsReducer = createReducer(
     {
         [addContact]: (state, {payload}) => (state = {...state, items: [...state.items, {...payload}]}),
         [loadContacts]: (state, {payload}) => (state = {...state, items: [...payload]}),
+        [clearContacts]: state => (state = {...initialState, loading: state.loading}),
         [removeContact]: (state, {payload}) => (state = {...state, items: [...state.items.filter(contact => contact.id !== payload)]}),
         [changeFilter]: (state, {payload}) => (state = {...state, filter: payload}),
         [changeLoadingStatus]: state => (state = {...state, loading: !state.loading}),
