@@ -22,7 +22,7 @@ const contactsReducer = createReducer(
     {
         [addContact]: (state, {payload}) => (state = {...state, items: [...state.items, {...payload}]}),
         [loadContacts]: (state, {payload}) => (state = {...state, items: [...payload]}),
-        [clearContacts]: state => (state = {...initialState, loading: state.loading}),
+        [clearContacts]: state => (state = {...initialState}),
         [removeContact]: (state, {payload}) => (state = {...state, items: [...state.items.filter(contact => contact.id !== payload)]}),
         [changeFilter]: (state, {payload}) => (state = {...state, filter: payload}),
         [changeLoadingStatus]: state => (state = {...state, loading: !state.loading}),

@@ -1,3 +1,5 @@
 const getEmail = state => state.auth.email;
 
-export default {getEmail};
+const getLogged = state => state.auth.logged;
+
+export default {getEmail, getLogged};

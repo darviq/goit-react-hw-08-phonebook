@@ -1,5 +1,5 @@
 import axios from "axios";
-import {addContact, loadContacts, clearContacts, removeContact, changeLoadingStatus, setError} from "../reducers/contactsReducer";
+import {addContact, loadContacts, removeContact, changeLoadingStatus, setError} from "../reducers/contactsReducer";
 
 const baseURL = "https://finalphonebook-default-rtdb.firebaseio.com";
 
@@ -27,7 +27,7 @@ export const loadContactsOperation = () => (dispatch, getState) => {
                     id: key,
                 }));
                 dispatch(loadContacts(contacts));
-            } else dispatch(clearContacts());
+            }
         })
         .catch(error => dispatch(setError(error)))
         .finally(() => dispatch(changeLoadingStatus()));

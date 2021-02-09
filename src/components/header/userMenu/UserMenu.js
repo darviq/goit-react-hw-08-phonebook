@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {useDispatch} from "react-redux";
 import {logOut} from "../../../redux/reducers/authReducer";
+import {clearContacts} from "../../../redux/reducers/contactsReducer";
 
 const Li = styled.li`
     display: flex;
@@ -23,6 +24,7 @@ const UserMenu = ({email}) => {
     const dispatch = useDispatch();
 
     const buttonHandler = () => {
+        dispatch(clearContacts());
         dispatch(logOut());
     };
 

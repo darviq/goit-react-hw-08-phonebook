@@ -1,9 +1,9 @@
-import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
 import styled from "styled-components";
 import mainRoutes from "../../routes/mainRoutes";
 import authSelectors from "../../redux/selectors/authSelectors";
 import UserMenu from "./userMenu/UserMenu";
+import NavItem from "./navItem/NavItem";
 
 const Ul = styled.ul`
     display: flex;
@@ -36,12 +36,8 @@ const Header = () => {
     return (
         <>
             <Ul>
-                {mainRoutes.map(({path, exact, name}) => (
-                    <li key={path}>
-                        <NavLink to={path} exact={exact} className="link" activeClassName="active-link">
-                            {name}
-                        </NavLink>
-                    </li>
+                {mainRoutes.map(route => (
+                    <NavItem key={route.path} {...route} />
                 ))}
                 {email && <UserMenu email={email} />}
             </Ul>
